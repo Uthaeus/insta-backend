@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   respond_to :json 
 
   def home
+    render json: { message: 'Hello World' }
   end
 
   def user_current
