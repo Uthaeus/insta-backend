@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :posts
   get 'home', to: 'pages#home'
   get 'user_current', to: 'pages#user_current'

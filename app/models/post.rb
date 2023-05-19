@@ -4,4 +4,6 @@ class Post < ApplicationRecord
   validates_presence_of :image, :content
 
   mount_uploader :image, PostUploader
+
+  has_many :comments, dependent: :destroy
 end

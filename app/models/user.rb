@@ -10,5 +10,6 @@ class User < ApplicationRecord
     super 
   end
 
-  has_many :posts 
+  has_many :posts
+  has_many :comments, dependent: :destroy
 end
