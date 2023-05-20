@@ -7,18 +7,19 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
-    render json: @comments
+    render json: @comments.as_json(include: [:user, :post])
   end
 
   # GET /comments/1
   def show
-    render json: @comment
+    render json: @comment.as_json(include: [:user, :post])
   end
 
   # POST /comments
   def create
+    
     @comment = Comment.new(comment_params)
-
+    
     if @comment.save
       render json: @comment, status: :created, location: @comment
     else
