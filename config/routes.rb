@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :topics
   resources :comments
   resources :posts
   get 'home', to: 'pages#home'

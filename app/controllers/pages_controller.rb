@@ -3,7 +3,8 @@ class PagesController < ApplicationController
   respond_to :json 
 
   def home
-    render json: { message: 'Hello World' }
+    @posts = Post.all.order(created_at: :desc).limit(6)
+    render json: @posts.as_json(include: [:user, :comments => {include: :user}])
   end
 
   def user_current
