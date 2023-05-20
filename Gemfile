@@ -51,3 +51,5 @@ gem 'devise-jwt', '~> 0.11.0'
 
 gem 'carrierwave', '~> 2.2', '>= 2.2.3'
 gem 'mini_magick', '~> 4.12'
+
+gem 'activerecord-filter', '~> 7.0'

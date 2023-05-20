@@ -12,7 +12,10 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   def show
-    render json: @topic.as_json(include: [:user => {include: [:comments, :posts]}])
+    
+    @posts = topic_scope(@topic.title)
+    render json: { topic: @topic.as_json(include: [:user => {include: [:comments, :posts]}]), posts: @posts.as_json(include: [:user, :comments => {include: :user}]) }
+      
   end
 
   # POST /topics
