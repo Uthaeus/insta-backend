@@ -10,7 +10,8 @@ class User < ApplicationRecord
     super 
   end
 
-  has_many :posts
+  has_many :likes, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :topics, dependent: :destroy
 end
