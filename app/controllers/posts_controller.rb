@@ -7,12 +7,14 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
 
-    render json: @posts.as_json(include: [:user, :comments => {include: :user}])
+    render json: @posts.as_json(include: [:user, :comments, :likes, :topics, :comments => {include: [:user, :likes]}])
   end
 
   # GET /posts/1
   def show
-    render json: @post.as_json(include: [:user, :comments => {include: :user}])
+    # @is_liked = Like.where(user_id: current_user.id, post_id: @post.id).exists?
+    # render json: @post.as_json(include: [:user, :comments, :likes, :topics, :comments => {include: [:user, :likes]}], methods: [:is_liked])
+    render json: @post.as_json(include: [:user, :comments, :likes, :topics, :comments => {include: [:user, :likes]}])
   end
 
   # POST /posts

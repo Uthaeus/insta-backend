@@ -3,5 +3,7 @@ class ApplicationController < ActionController::API
 
     def topic_scope title
         Post.where('content LIKE ?', "%#{title}%")
-      end
+    end
+
+    
 end
