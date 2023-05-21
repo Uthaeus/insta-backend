@@ -4,5 +4,4 @@ class Comment < ApplicationRecord
   validates_presence_of :content
 
   has_many :comments, dependent: :destroy
-  has_many :topics, dependent: :destroy
 end
