@@ -1,7 +1,21 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :topics
-  resources :comments
-  resources :posts
+  resources :comments do
+    resources :likes, only: [:create, :destroy]
+
+    resources :comments do 
+      resources :likes, only: [:create, :destroy]
+    end
+  end
+  resources :posts do
+    resources :likes, only: [:create, :destroy]
+
+    resources :comments do 
+      resources :likes, only: [:create, :destroy]
+    end
+  end
+
   get 'home', to: 'pages#home'
   get 'user_current', to: 'pages#user_current'
   
